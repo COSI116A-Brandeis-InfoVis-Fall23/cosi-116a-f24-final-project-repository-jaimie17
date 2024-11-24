@@ -20,6 +20,9 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-config" content="favicons/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 
 <!-- Main page content -->
@@ -107,24 +110,22 @@
     <!-- Change viewbox to whatever you want, e.g. "0 0 1000 6000" This determines your aspect ratio and coordinate system -->    
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
     <!-- Map Visualization -->
-    
-    <!-- Choropleth Map on the Right (80%) -->
-    <div class="map-container">
-      <div id="map-container"></div>
-    </div>
-    </div>
-    
-    <!-- Pie Chart on the Left (20%) -->
-    <div class="pie-chart-container">
-      <div id="pie-chart"></div>
-    </div>
-    <!-- Bar Chart Visualization (underneath) -->
-    <div class="bar-chart-container">
-    <div id="bar-container"></div>
-
-  </div>
+    <h1>Housing Inequality Across the U.S.</h1>
+ <!-- State Selection Dropdown -->
+    <select id="stateSelect">Select a State
+    </select>
+    <div id="map">chloropath us map</div>
+    <h3>Pie Chart</h3>
+    <canvas id="raceChart"></canvas>
+     <!-- Income Chart (Bar Chart) -->
+ <h3>Income Chart</h3>
+ <div class="chart-container"><canvas id="incomeChart"></canvas></div>
+</div>
  
-  
+	
+
+
+
   
   <!-- Your writeup goes here -->
   <div class = "content-column">
@@ -133,11 +134,11 @@
     
     <p><em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:</em></p>
     
-    <video controls width="100%">
+    <!-- <video controls width="100%">
       <source src="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4" type="video/mp4">
       <p>Your browser doesn't support HTML5 video. Here is
        a <a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">link to the video</a> instead.</p>
-    </video>
+    </video> -->
 
     <h1>Visualization explanation</h1>
     
@@ -199,7 +200,6 @@
   </div>
   
   <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
-  <script src="lib/d3.v4/d3.v4.js"></script>
-  <script src="js/visualization.js"></script>
+  <script src="js/visualization.js"></script> 
 </body>
 </html>

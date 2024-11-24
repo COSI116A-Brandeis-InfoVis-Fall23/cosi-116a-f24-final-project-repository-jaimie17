@@ -3,6 +3,7 @@ body {
 	padding: 0 10px;
 	font: 18px/1.5 -apple-system, BlinkMacSystemFont, "avenir next",avenir, "Segoe UI", "lucida grande", "helvetica neue", helvetica, "Fira Sans",roboto, noto, "Droid Sans", cantarell, oxygen, ubuntu, "franklin gothic medium", "century gothic", "Liberation Sans",
 	sans-serif;
+	background-color: rgb(255, 241, 246);
 }
 
 h1, h2, h3 {
@@ -16,39 +17,69 @@ h1, h2, h3 {
 }
 
 /* But your visualization should be full-width and full-height */
+/* Main Visualization Holder */
 .vis-holder {
-  width: 100%;
-  height: 100%;
+    background-color: #eaede9;
+    border-radius: 8px;
+    box-shadow: 0 7px 10px rgba(7, 5, 33, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+	max-height: 400ch;
 }
-.vis-holder {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-  }
-  
-  .map-container {
-	width: 80%;
-	height: 600px; /* Adjust as needed */
-  }
-  
-  .pie-chart-container {
-	width: 20%;
-	height: 300px; /* Adjust as needed */
-  }
-  
-  .bar-chart-container {
-	width: 100%;
-	height: 400px; /* Adjust as needed */
-  }
-  .tooltip {
-	position: absolute;
-	padding: 8px;
-	background-color: rgba(0, 0, 0, 0.75);
-	color: white;
-	border-radius: 4px;
+
+/* Title */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Dropdown Styling */
+#stateSelect {
+    display: block;
+    width: 200px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    font-size: 16px;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+#stateSelect:hover {
+    border-color: #007bff;
+}
+
+/* Pie Chart Styling */
+#raceChart {
+    max-width: 300px;
+    max-height: 400px;
+}
+
+/* Bar Chart Container */
+.chart-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+	border-color: aqua;
+	border-radius: 3px;
+}
+
+.tooltip {
 	pointer-events: none;
-	opacity: 0;
-	transition: opacity 0.2s;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 14px;
+	visibility: hidden;
   }
   
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
