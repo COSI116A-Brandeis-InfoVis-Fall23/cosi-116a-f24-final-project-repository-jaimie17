@@ -20,7 +20,37 @@ h1, h2, h3 {
   width: 100%;
   height: 100%;
 }
-
+.vis-holder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  .map-container {
+	width: 80%;
+	height: 600px; /* Adjust as needed */
+  }
+  
+  .pie-chart-container {
+	width: 20%;
+	height: 300px; /* Adjust as needed */
+  }
+  
+  .bar-chart-container {
+	width: 100%;
+	height: 400px; /* Adjust as needed */
+  }
+  .tooltip {
+	position: absolute;
+	padding: 8px;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: white;
+	border-radius: 4px;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.2s;
+  }
+  
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
 #forkongithub a{
 	background:#00F;
