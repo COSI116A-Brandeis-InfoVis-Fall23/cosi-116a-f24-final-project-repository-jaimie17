@@ -108,15 +108,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
           // 2. updating Income Chart (Bar Chart) with Income Ranges
           const incomeBrackets = [
-              "$15,000 to $24,999 %",
-              "$25,000 to $34,999 %",
-              "$35,000 to $44,999 %",
-              "$45,000 to $59,999 %",
-              "$60,000 to $74,999 %",
-              "$75,000 to $99,999 %",
-              "$100,000 to $124,999 %",
-              "$125,000 to $149,999 %",
-              "$150,000 or more %"
+              "Less than $14,999",
+              "$15,000 to $24,999",
+              "$25,000 to $34,999",
+              "$35,000 to $44,999",
+              "$45,000 to $59,999",
+              "$60,000 to $74,999",
+              "$75,000 to $99,999",
+              "$100,000 to $124,999",
+              "$125,000 to $149,999",
+              "$150,000 or more"
           ];
 
           // extracting the percentage data for each income range from the income object
