@@ -172,7 +172,7 @@
       Our preprocessing steps involved data cleaning, transformation, and
       aggregation to facilitate meaningful analysis and visualization.
       First, we downloaded the datasets as Excel files from the HUD website and imported them into Google Sheets.
-      We then cleaned the data by adding the appropriate column headers found on the website and removing empty columns and columns unrelated to our topic.
+      We then cleaned the data by adding the appropriate column headers found in each dataset's metadata and removing empty columns and columns unrelated to our topic.
       Once we had our cleaned data, we explored it in Tableau to identify preliminary trends and patterns. 
       We further reduced the data to include only the columns we needed for our visualizations, including percent housing problems (housing problem dataset), percent household income brackets (socioeconomic dataset), and percent racial demographics (race dataset) in separate sheets.
       Finally, we exported the data as CSV files, then converted them to JSON files for use in our visualizations.
@@ -181,7 +181,7 @@
 
     <h1>Task Analysis</h1>
 
-    <p>Our domain tasks broken down into abstract tasks were:
+    <p>After conducting interviews, we came up with our domain tasks, broken down into abstract tasks:
       <ol>
         <li>What factors contribute the most to housing inequality? (summarize, explore, present)</li>
         <li>Do factors (such as race, income, etc.) affect housing inequality? (identify, locate, discover)</li>
@@ -210,6 +210,54 @@
     Logical discussion of design choices grounded in theory from course.
     Discusses feedback from usability testing.</em></p>
 
+    <strong>Sketches:</strong>
+    <p>
+      Each group member created three possible sketches for our visualization, then we voted on our favorite elements from each sketch, pictured below.
+    </p>
+    <img src="images/mapsketch.png" alt="Sketch of a US map with a tooltip showing income">
+    <ul>
+      <li>We thought using a map as a visualization would provide immediate geographical context. This makes sense since our data is across US states.</li>
+      <li>Monochromatic color maps (light to dark) are appropriate to understand the range of housing rents as the luminosity and saturation channels can be employed to represent this data.</li>
+      <li>Since the data is 2D, we don't have to worry about it being distorted or getting skewed one way.</li>
+      <li>Mousing over each state can show details on demand.</li>
+    </ul>
+    <img src="images/heatmapsketch.png" alt="Sketch of a heatmap showing housing disparity across states">
+    <ul>
+      <li>It gives a comparison across multiple values. Also, the grid forms an abstract spatial field where position, color, and size encode information.</li>
+      <li>Color intensity forms a continuous field over this space, representing the percentage of housing units in each state.</li>
+      <li> We like heat maps because they are simultaneous, as the viewer can see all the information at once.</li>
+      <li> We like the compactness of it as well. It allows us to display a large amount of information in a relatively small space.</li>
+    </ul>
+    <img class="content-column" src="images/piechartsketch.png" alt="Sketch of a pie chart showing different housing problems">
+    <ul>
+      <li>Pie charts are helpful to visualize the weight of each slice as it corresponds to a specific category.</li>
+      <li>We think it's a good visualization and appropriate for our project as it shows the proportions clearly for each state’s housing problems.</li>
+      <li>It's helpful as it doesn't overcrowd and allows for a reasonable comparison between segments while being easily digestible.</li>
+      <li>Since the data is discrete, using an appropriate color field will allow our perceptual system to identify stand-out and high-contrast colors, pointing to trends, much like how we perceive sequential colors on geographical spatial fields.</li>
+    </ul>
+
+    <strong>Mockup:</strong>
+    <p>Using our sketches, we created a digital mockup of our visualization in Figma.</p>
+    <img class="content-column" src="images/mockup.png" alt="Mockup of our visualization, which has a U.S. color map showing housing problems, a pie chart showing racial demographics, and a bar chart with median income for each state">
+    <p>
+      We prioritized seeing what factors affect housing inequality, specifically focusing on race and median income. 
+      We have charts showing race and median income alongside a US map portraying the percentage of housing problems for each state. 
+      The user can mouse over any state on the map to see the percentage of housing problems, and when selected the bar for that state in the bar chart 
+      will highlight that state’s median income. Also, the pie chart will change to display the racial demographics for the selected state. 
+      Vice versa, selecting a bar on the bar chart will select the state on the map. 
+      This helps the user compare percentages of housing problems across states, enhanced by the sequential color scale of the map. 
+      The user can explore the charts to compare race, income, and housing problems across states, and as a result, find trends in the data and focus on the states they are most interested in. 
+      This also ties into the task of seeing what locations are most affected by housing inequality, since the user can see the states most affected by housing problems.
+    </p>
+
+    <strong>Usability Testing:</strong>
+    <p>
+      We conducted usability testing with peers to gather feedback on our visualization mockup.
+      Participant feedback was generally positive, with users liking the spatial layout and finding the visualization easy to navigate and understand.
+      Suggestions for improvement included using a color other than green for the map, as green is often associated with money or wealth, which is not what we are trying to convey.
+      They suggested using a color scale that goes from white to the darkest color, as this would be easier to see.
+      Also, users suggested sorting the bar chart in ascending/descending order rather than alphabetically to better assess trends, and possibly adding more pie and bar chart options to show more data. 
+    </p>
 
     <h1>Conclusion</h1>
 
