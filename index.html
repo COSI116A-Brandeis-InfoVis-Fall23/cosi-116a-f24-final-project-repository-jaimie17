@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   
   <!-- Title -->
-  <title>Project Team #: Topic, COSI 116A F23</title>
+  <title>Project Team 10: Housing Inequality, COSI 116A F24</title>
   
   <!-- CSS Styling -->
   <link rel="stylesheet" href="style.css">
@@ -29,31 +29,31 @@
 <body>
 
   <!-- Update this with your GitHub repo URL -->
-  <span id="forkongithub"><a href="https://github.com/COSI116A-Brandeis-InfoVis-Fall23/cosi-116a-f24-final-project-repository-jaimie17">Fork me on GitHub</a></span>
+  <span id="forkongithub"><a href="https://github.com/COSI116A-Brandeis-InfoVis-Fall23/cosi-116a-f24-final-project-repository-team-10">Fork me on GitHub</a></span>
 
   <!-- Your writeup goes here -->
   <div class = "content-column">
   
-    <h1>Project Team #: Topic, COSI 116A F23</h1>
+    <h1>Project Team 10: Housing Inequality, COSI 116A F24</h1>
     
     <p><strong>Samiyanur Islam</strong>, <strong>Jaimie Louie</strong>, <strong> Kelden Dorji</strong> & <strong>Ian Ho</strong></p>
     
-    <p>Project-long Course Project as part of COSI 116A: Information Visualization</a>, taught by <a href="https://cs.brandeis.edu/~dylan/">Prof. Dylan Cashman</a>, <a href="https://cs.brandeis.edu/">Brandeis University</a>.</p>
+    <p>Semester-long Course Project as part of COSI 116A: Information Visualization</a>, taught by <a href="https://cs.brandeis.edu/~dylan/">Prof. Dylan Cashman</a>, <a href="https://cs.brandeis.edu/">Brandeis University</a>.</p>
     
     
     <h1>Motivation</h1>
     
     <p><em>Housing inequality is a significant issue in the United States, affecting access to safe, affordable, and quality housing for millions of people. </em></p>
-    <p><em>Expectation: Visualizing Housing Inequality in the United States (2016-2020). Our project examines housing inequality in the United States using
+    <p><em>Visualizing Housing Inequality in the United States (2016-2020): Our project examines housing inequality in the United States using
       data from the U.S. Department of Housing and Urban Development,
       spanning the years 2016 to 2020.</em></p>
 
-      <p>Factors contribute to the complexities of housing inequality:</p>
+      <p>Factors that contribute to the complexities of housing inequality:</p>
       <ul>
         <li>
           <strong>Income Disparities</strong>: Significant gaps in income
           levels create unequal opportunities for individuals to access
-          safe, affordable, and quality housing. Rising housing costs often
+          safe and affordable housing. Rising housing costs often
           outpace wage growth, placing a strain on low- and middle-income
           households.
         </li>
@@ -66,7 +66,7 @@
         </li>
         <li>
           <strong>Demographic Factors</strong>: Race, ethnicity, age, and
-          family structure can influence an individual's experience in the
+          household structure can influence an individual's experience in the
           housing market. Systemic biases and discriminatory practices can
           lead to disparities in access to housing opportunities and fair
           lending practices.
@@ -94,14 +94,11 @@
           <strong>Inform Policy and Solutions</strong>: Provide insights
           that could help inform policies and interventions aimed at
           addressing housing inequality and promoting equitable access to
-          safe and affordable housing for all.
+          safe and affordable housing.
         </li>
       </ul>
 
-    <h1>Visualization</h1>
-    
-    <p><em>Include the interactive visualization as part of this page. Static example follows.</em></p>
-    
+    <h1>Visualization</h1>    
     
   </div>
   
@@ -144,9 +141,18 @@
     
     <p><em>Final visualization screenshots (PNG images), design justifications, UI walk-through, and linked presentation slides.</em></p>
     <p>
-      Our visualizations include a choropleth map and other interactive
+      Our visualizations include a choropleth U.S. map and other interactive
       elements that allow users to explore housing inequality data across
-      states and demographics.
+      states. The map is color coded to represent the percentage of housing problems in each state, 
+      with housing problems defined as households with any of the following issues:
+      <ol>
+        <li>Housing unit lacks complete kitchen facilities</li>
+        <li>Housing unit lacks complete plumbing facilities</li>
+        <li>Household is overcrowded (HUD defines overcrowding as more than 1 person per room)</li>
+        <li>Household is cost burdened (HUD defines cost burden as monthly housing costs (including utilities) exceeding 30% of monthly income)</li>
+      </ol>
+      Our visualization also includes a pie chart displaying racial demographics and a bar chart showing income distribution for each state.
+      Selecting a state from the dropdown menu will update the map and charts to display data for that state.
     </p>
 
     <h1>Data Analysis</h1>
@@ -156,21 +162,45 @@
 
     <p>
       This project uses datasets from the U.S. Department of Housing and
-      Urban Development, including housing problems, demographic
-      information, housing characteristics, and socioeconomic indicators
-      from 2016 to 2020.
+      Urban Development, including <a href="https://hudgis-hud.opendata.arcgis.com/datasets/35f3c8985bc7407ba0fe8f7b2291f5c0/about">housing problems</a>, 
+      <a href="https://hudgis-hud.opendata.arcgis.com/datasets/709f3ace71c24b29aa0f90e2f16c114d/about">demographic
+        information</a>, <a href="https://hudgis-hud.opendata.arcgis.com/datasets/c77a9808624943b1a4b4b63007b0efcc/about">housing characteristics</a>, 
+        and <a href="https://hudgis-hud.opendata.arcgis.com/datasets/7d6504755b604e02afea342ac9cf748f/about">socioeconomic indicators</a>
+      by state from 2016 to 2020.
     </p>
     <p>
       Our preprocessing steps involved data cleaning, transformation, and
       aggregation to facilitate meaningful analysis and visualization.
+      First, we downloaded the datasets as Excel files from the HUD website and imported them into Google Sheets.
+      We then cleaned the data by adding the appropriate column headers found on the website and removing empty columns and columns unrelated to our topic.
+      Once we had our cleaned data, we explored it in Tableau to identify preliminary trends and patterns. 
+      We further reduced the data to include only the columns we needed for our visualizations, including percent housing problems (housing problem dataset), percent household income brackets (socioeconomic dataset), and percent racial demographics (race dataset) in separate sheets.
+      Finally, we exported the data as CSV files, then converted them to JSON files for use in our visualizations.
     </p>
 
 
     <h1>Task Analysis</h1>
 
-    <p><em>Summary of task table.</em></p>
-
-    <p><em>Expectation: Clearly describes domain tasks, processes, goals and abstract tasks for domain problems.</em></p>
+    <p>Our domain tasks broken down into abstract tasks were:
+      <ol>
+        <li>What factors contribute the most to housing inequality? (summarize, explore, present)</li>
+        <li>Do factors (such as race, income, etc.) affect housing inequality? (identify, locate, discover)</li>
+        <li>Which locations are most affected by housing disparity? (compare, locate, discover)</li>
+        <li>What trends can we find in the data? (summarize, explore, present)</li>
+      </ol>
+      Our visualization is primarily developed for “discover” and “present” consumptions. 
+      We would say discover because we are focusing on housing inequality, and want to be able to show our audience 
+      a visualization that will let them explore the data and form some discovery about the importance of the topic. 
+      In order to do this, we used interactive visualizations that show factors related to housing inequality, 
+      like location, income, and demographics. Secondly, it is developed for “present” because we want to tell a story with our visualization,
+      which can help with highlighting the disparities surrounding this issue.
+    </p>
+    <p>
+      The primary consumers of our visualization would be the general public, policymakers, possibly teachers, and researchers.
+      This is because we could use our visualization as a source of raising awareness about housing inequality through the public, 
+      and it could reach policymakers into realizing the severity and passing reforms to tackle the issue. 
+      Researchers and teachers could also possibly play a similar role in being able to influence a new generation of students and scholars to help this issue.
+    </p>
 
     <h1>Design Process</h1>
     
