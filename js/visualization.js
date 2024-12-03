@@ -3,6 +3,29 @@ document.addEventListener('DOMContentLoaded', function () {
   let raceChartInstance = null;
   let incomeChartInstance = null;
 
+
+// map visualization
+var svg = d3.select("#us-map");
+
+// Define dimensions
+var width = 960;
+var height = 600;
+
+// Create projection and path generator
+var projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1200);
+var path = d3.geoPath().projection(projection);
+
+d3.json("data/us-states.json").then(function(data) {
+    svg.selectAll("path")
+        .data(data.features)
+        .enter()
+    .append("path")
+        .attr("d", path)
+        .attr("class", "state");
+}).catch(function(error) {
+    console.error("Error loading GeoJSON data:", error);
+});
+
   // loading ncome and race data
   Promise.all([
       fetch('data/income.json').then(response => response.json()),

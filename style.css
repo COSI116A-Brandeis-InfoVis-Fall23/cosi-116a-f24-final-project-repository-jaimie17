@@ -34,6 +34,19 @@ h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
+/* Map Styling */
+svg {
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: auto;
+	background-color: #f9f9f9;
+}
+.state {
+	fill: lightgray;
+	stroke: black;
+	stroke-width: 0.5;
+}
 
 /* Dropdown Styling */
 #stateSelect {

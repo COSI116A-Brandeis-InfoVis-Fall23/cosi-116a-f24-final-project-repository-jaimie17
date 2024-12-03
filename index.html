@@ -3,14 +3,15 @@
 
 <!-- Metadata -->
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Title -->
   <title>Project Team 10: Housing Inequality, COSI 116A F24</title>
   
   <!-- CSS Styling -->
   <link rel="stylesheet" href="style.css">
- 
+
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
@@ -20,7 +21,8 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-config" content="favicons/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
@@ -97,10 +99,13 @@
           safe and affordable housing.
         </li>
       </ul>
+      
 
     <h1>Visualization</h1>    
     
   </div>
+
+  
   
   <!-- Your visualization here -->
 <div class="vis-holder">
@@ -108,22 +113,22 @@
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
     <!-- Map Visualization -->
     <h1>Housing Inequality Across the U.S.</h1>
- <!-- State Selection Dropdown -->
-    <select id="stateSelect">Select a State
-    </select>
+
     <div id="map">chloropath us map</div>
+    <!--create a svg with a to display the us map inside it -->
+    <svg id="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+
+<!-- State Selection Dropdown -->
+    <select id="stateSelect" title="Select a State">Select a State
+    </select>
+    
     <h3>Pie Chart</h3>
     <canvas id="raceChart"></canvas>
-     <!-- Income Chart (Bar Chart) -->
- <h3>Income Chart</h3>
- <div class="chart-container"><canvas id="incomeChart"></canvas></div>
+    <!-- Income Chart (Bar Chart) -->
+<h3>Income Chart</h3>
+<div class="chart-container"><canvas id="incomeChart"></canvas></div>
 </div>
- 
-	
 
-
-
-  
   <!-- Your writeup goes here -->
   <div class = "content-column">
 
@@ -134,7 +139,7 @@
     <!-- <video controls width="100%">
       <source src="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4" type="video/mp4">
       <p>Your browser doesn't support HTML5 video. Here is
-       a <a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">link to the video</a> instead.</p>
+      a <a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">link to the video</a> instead.</p>
     </video> -->
 
     <h1>Visualization explanation</h1>
