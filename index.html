@@ -105,7 +105,7 @@
     
   </div>
 
-  
+  <div id="cmS"></div>
   
   <!-- Your visualization here -->
 <div class="vis-holder">
@@ -113,10 +113,18 @@
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
     <!-- Map Visualization -->
     <h1>Housing Inequality Across the U.S.</h1>
+    <div id="map">Samiya's chloropath us map</div>
+    <canvas id="medianIncomeChartS"></canvas>
+    <svg id="stateMap" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
 
-    <div id="map">chloropath us map</div>
+    <div id="map">jaimie's chloropath us map</div>
     <!--create a svg with a to display the us map inside it -->
     <svg id="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+    <!-- Median Income Chart -->
+    <h3>Median Income by State</h3>
+    <div class="chart-container">
+        <canvas id="medianIncomeChartGG" width="400" height="200"></canvas>
+    </div>
 
 <!-- State Selection Dropdown -->
     <select id="stateSelect" title="Select a State">Select a State
@@ -127,12 +135,6 @@
     <!-- Income Chart (Bar Chart) -->
 <h3>Income Chart</h3>
 <div class="chart-container"><canvas id="incomeChart"></canvas></div>
-</div>
-
-<!-- Median Income Chart -->
-<h3>Median Income by State</h3>
-<div class="chart-container">
-    <canvas id="medianIncomeChart" width="400" height="200"></canvas>
 </div>
 
   <!-- Your writeup goes here -->
@@ -290,5 +292,6 @@
   
   <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
   <script src="js/visualization.js"></script> 
+  <script src="js/vis.js"></script> 
 </body>
 </html>

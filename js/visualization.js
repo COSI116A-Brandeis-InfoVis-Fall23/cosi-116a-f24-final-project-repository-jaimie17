@@ -21,7 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
             .enter()
         .append("path")
             .attr("d", path)
-            .attr("class", "state");
+            .attr("class", "state")
+        .style("fill", "lightblue")
+        .style("stroke", "white")
+        .on("mouseover", function (event, d) {
+            d3.select(this).style("fill", "orange");
+        })
+        .on("mouseout", function (event, d) {
+            d3.select(this).style("fill", "lightblue");
+        })
+        .on("click", function (event, d) {
+            const stateName = d.properties.NAME;
+            console.log(`Clicked on: ${stateName}`);
+        });;
     }).catch(function(error) {
         console.error("Error loading GeoJSON data:", error);
     });
@@ -184,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function () {
   
         // 3. bar chart for median income across all states
         const stateNames = incomeData.map(d => d.NAME);
-        const medianIncomes = incomeData.map(d => d['Median Income']); // Replace with your actual key
+        const medianIncomes = incomeData.map(d => d['Median Household Income In The Past 12 Months']); // Replace with your actual key
 
         console.log('State Names:', stateNames);
         console.log('Median Incomes:', medianIncomes);
 
-        const medianIncomeCtx = document.getElementById('medianIncomeChart').getContext('2d');
+        const medianIncomeCtx = document.getElementById('medianIncomeChartGG').getContext('2d');
         // Declare medianIncomeChartInstance at the top of your script if needed for re-renders
         if (medianIncomeChartInstance) {
             medianIncomeChartInstance.destroy(); // Destroy existing chart to avoid conflicts
@@ -203,7 +215,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     data: medianIncomes,
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    borderWidth: 1,
+                    hoverBackgroundColor: 'orange', // Hover effect
+                    hoverBorderColor: 'orange'
                 }]
             },
             options: {
@@ -246,4 +260,5 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error loading data:", error);
     });
   });
-  
+// hello
+
