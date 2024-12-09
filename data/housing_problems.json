@@ -5,7 +5,7 @@
       "STATE":2,
       "STUSAB":"AK",
       "NAME":"Alaska",
-      "Percent of all households with any of the 4 housing problems":34.14
+      "PERCENT":34.14
    },
    {
       "OBJECTID":5,
@@ -13,7 +13,7 @@
       "STATE":1,
       "STUSAB":"AL",
       "NAME":"Alabama",
-      "Percent of all households with any of the 4 housing problems":25.15
+      "PERCENT":25.15
    },
    {
       "OBJECTID":8,
@@ -21,7 +21,7 @@
       "STATE":5,
       "STUSAB":"AR",
       "NAME":"Arkansas",
-      "Percent of all households with any of the 4 housing problems":25.19
+      "PERCENT":25.19
    },
    {
       "OBJECTID":7,
@@ -29,7 +29,7 @@
       "STATE":4,
       "STUSAB":"AZ",
       "NAME":"Arizona",
-      "Percent of all households with any of the 4 housing problems":31.4
+      "PERCENT":31.4
    },
    {
       "OBJECTID":9,
@@ -37,7 +37,7 @@
       "STATE":6,
       "STUSAB":"CA",
       "NAME":"California",
-      "Percent of all households with any of the 4 housing problems":43.49
+      "PERCENT":43.49
    },
    {
       "OBJECTID":10,
@@ -45,7 +45,7 @@
       "STATE":8,
       "STUSAB":"CO",
       "NAME":"Colorado",
-      "Percent of all households with any of the 4 housing problems":31.9
+      "PERCENT":31.9
    },
    {
       "OBJECTID":11,
@@ -53,7 +53,7 @@
       "STATE":9,
       "STUSAB":"CT",
       "NAME":"Connecticut",
-      "Percent of all households with any of the 4 housing problems":34.12
+      "PERCENT":34.12
    },
    {
       "OBJECTID":13,
@@ -61,7 +61,7 @@
       "STATE":11,
       "STUSAB":"DC",
       "NAME":"District of Columbia",
-      "Percent of all households with any of the 4 housing problems":34.99
+      "PERCENT":34.99
    },
    {
       "OBJECTID":12,
@@ -69,7 +69,7 @@
       "STATE":10,
       "STUSAB":"DE",
       "NAME":"Delaware",
-      "Percent of all households with any of the 4 housing problems":28.76
+      "PERCENT":28.76
    },
    {
       "OBJECTID":14,
@@ -77,7 +77,7 @@
       "STATE":12,
       "STUSAB":"FL",
       "NAME":"Florida",
-      "Percent of all households with any of the 4 housing problems":35.27
+      "PERCENT":35.27
    },
    {
       "OBJECTID":15,
@@ -85,7 +85,7 @@
       "STATE":13,
       "STUSAB":"GA",
       "NAME":"Georgia",
-      "Percent of all households with any of the 4 housing problems":29.52
+      "PERCENT":29.52
    },
    {
       "OBJECTID":16,
@@ -93,7 +93,7 @@
       "STATE":15,
       "STUSAB":"HI",
       "NAME":"Hawaii",
-      "Percent of all households with any of the 4 housing problems":42.99
+      "PERCENT":42.99
    },
    {
       "OBJECTID":20,
@@ -101,7 +101,7 @@
       "STATE":19,
       "STUSAB":"IA",
       "NAME":"Iowa",
-      "Percent of all households with any of the 4 housing problems":23.1
+      "PERCENT":23.1
    },
    {
       "OBJECTID":17,
@@ -109,7 +109,7 @@
       "STATE":16,
       "STUSAB":"ID",
       "NAME":"Idaho",
-      "Percent of all households with any of the 4 housing problems":27.06
+      "PERCENT":27.06
    },
    {
       "OBJECTID":18,
@@ -117,7 +117,7 @@
       "STATE":17,
       "STUSAB":"IL",
       "NAME":"Illinois",
-      "Percent of all households with any of the 4 housing problems":30.09
+      "PERCENT":30.09
    },
    {
       "OBJECTID":19,
@@ -125,7 +125,7 @@
       "STATE":18,
       "STUSAB":"IN",
       "NAME":"Indiana",
-      "Percent of all households with any of the 4 housing problems":24.16
+      "PERCENT":24.16
    },
    {
       "OBJECTID":1,
@@ -133,7 +133,7 @@
       "STATE":20,
       "STUSAB":"KS",
       "NAME":"Kansas",
-      "Percent of all households with any of the 4 housing problems":25.14
+      "PERCENT":25.14
    },
    {
       "OBJECTID":2,
@@ -141,7 +141,7 @@
       "STATE":21,
       "STUSAB":"KY",
       "NAME":"Kentucky",
-      "Percent of all households with any of the 4 housing problems":24.73
+      "PERCENT":24.73
    },
    {
       "OBJECTID":3,
@@ -149,7 +149,7 @@
       "STATE":22,
       "STUSAB":"LA",
       "NAME":"Louisiana",
-      "Percent of all households with any of the 4 housing problems":28.07
+      "PERCENT":28.07
    },
    {
       "OBJECTID":38,
@@ -157,7 +157,7 @@
       "STATE":25,
       "STUSAB":"MA",
       "NAME":"Massachusetts",
-      "Percent of all households with any of the 4 housing problems":33.51
+      "PERCENT":33.51
    },
    {
       "OBJECTID":37,
@@ -165,7 +165,7 @@
       "STATE":24,
       "STUSAB":"MD",
       "NAME":"Maryland",
-      "Percent of all households with any of the 4 housing problems":30.77
+      "PERCENT":30.77
    },
    {
       "OBJECTID":4,
@@ -173,7 +173,7 @@
       "STATE":23,
       "STUSAB":"ME",
       "NAME":"Maine",
-      "Percent of all households with any of the 4 housing problems":27.11
+      "PERCENT":27.11
    },
    {
       "OBJECTID":39,
@@ -181,7 +181,7 @@
       "STATE":26,
       "STUSAB":"MI",
       "NAME":"Michigan",
-      "Percent of all households with any of the 4 housing problems":26.42
+      "PERCENT":26.42
    },
    {
       "OBJECTID":40,
@@ -189,7 +189,7 @@
       "STATE":27,
       "STUSAB":"MN",
       "NAME":"Minnesota",
-      "Percent of all households with any of the 4 housing problems":25.39
+      "PERCENT":25.39
    },
    {
       "OBJECTID":42,
@@ -197,7 +197,7 @@
       "STATE":29,
       "STUSAB":"MO",
       "NAME":"Missouri",
-      "Percent of all households with any of the 4 housing problems":25.57
+      "PERCENT":25.57
    },
    {
       "OBJECTID":41,
@@ -205,7 +205,7 @@
       "STATE":28,
       "STUSAB":"MS",
       "NAME":"Mississippi",
-      "Percent of all households with any of the 4 housing problems":26.6
+      "PERCENT":26.6
    },
    {
       "OBJECTID":43,
@@ -213,7 +213,7 @@
       "STATE":30,
       "STUSAB":"MT",
       "NAME":"Montana",
-      "Percent of all households with any of the 4 housing problems":28
+      "PERCENT":28
    },
    {
       "OBJECTID":50,
@@ -221,7 +221,7 @@
       "STATE":37,
       "STUSAB":"NC",
       "NAME":"North Carolina",
-      "Percent of all households with any of the 4 housing problems":27.88
+      "PERCENT":27.88
    },
    {
       "OBJECTID":51,
@@ -229,7 +229,7 @@
       "STATE":38,
       "STUSAB":"ND",
       "NAME":"North Dakota",
-      "Percent of all households with any of the 4 housing problems":22.97
+      "PERCENT":22.97
    },
    {
       "OBJECTID":44,
@@ -237,7 +237,7 @@
       "STATE":31,
       "STUSAB":"NE",
       "NAME":"Nebraska",
-      "Percent of all households with any of the 4 housing problems":24.92
+      "PERCENT":24.92
    },
    {
       "OBJECTID":46,
@@ -245,7 +245,7 @@
       "STATE":33,
       "STUSAB":"NH",
       "NAME":"New Hampshire",
-      "Percent of all households with any of the 4 housing problems":30.23
+      "PERCENT":30.23
    },
    {
       "OBJECTID":47,
@@ -253,7 +253,7 @@
       "STATE":34,
       "STUSAB":"NJ",
       "NAME":"New Jersey",
-      "Percent of all households with any of the 4 housing problems":37.4
+      "PERCENT":37.4
    },
    {
       "OBJECTID":48,
@@ -261,7 +261,7 @@
       "STATE":35,
       "STUSAB":"NM",
       "NAME":"New Mexico",
-      "Percent of all households with any of the 4 housing problems":29.83
+      "PERCENT":29.83
    },
    {
       "OBJECTID":45,
@@ -269,7 +269,7 @@
       "STATE":32,
       "STUSAB":"NV",
       "NAME":"Nevada",
-      "Percent of all households with any of the 4 housing problems":35.73
+      "PERCENT":35.73
    },
    {
       "OBJECTID":49,
@@ -277,7 +277,7 @@
       "STATE":36,
       "STUSAB":"NY",
       "NAME":"New York",
-      "Percent of all households with any of the 4 housing problems":38.52
+      "PERCENT":38.52
    },
    {
       "OBJECTID":52,
@@ -285,7 +285,7 @@
       "STATE":39,
       "STUSAB":"OH",
       "NAME":"Ohio",
-      "Percent of all households with any of the 4 housing problems":25.49
+      "PERCENT":25.49
    },
    {
       "OBJECTID":21,
@@ -293,7 +293,7 @@
       "STATE":40,
       "STUSAB":"OK",
       "NAME":"Oklahoma",
-      "Percent of all households with any of the 4 housing problems":25.51
+      "PERCENT":25.51
    },
    {
       "OBJECTID":22,
@@ -301,7 +301,7 @@
       "STATE":41,
       "STUSAB":"OR",
       "NAME":"Oregon",
-      "Percent of all households with any of the 4 housing problems":34.25
+      "PERCENT":34.25
    },
    {
       "OBJECTID":23,
@@ -309,7 +309,7 @@
       "STATE":42,
       "STUSAB":"PA",
       "NAME":"Pennsylvania",
-      "Percent of all households with any of the 4 housing problems":27.31
+      "PERCENT":27.31
    },
    {
       "OBJECTID":24,
@@ -317,7 +317,7 @@
       "STATE":44,
       "STUSAB":"RI",
       "NAME":"Rhode Island",
-      "Percent of all households with any of the 4 housing problems":33.14
+      "PERCENT":33.14
    },
    {
       "OBJECTID":29,
@@ -325,7 +325,7 @@
       "STATE":45,
       "STUSAB":"SC",
       "NAME":"South Carolina",
-      "Percent of all households with any of the 4 housing problems":26.97
+      "PERCENT":26.97
    },
    {
       "OBJECTID":30,
@@ -333,7 +333,7 @@
       "STATE":46,
       "STUSAB":"SD",
       "NAME":"South Dakota",
-      "Percent of all households with any of the 4 housing problems":23.27
+      "PERCENT":23.27
    },
    {
       "OBJECTID":31,
@@ -341,7 +341,7 @@
       "STATE":47,
       "STUSAB":"TN",
       "NAME":"Tennessee",
-      "Percent of all households with any of the 4 housing problems":26.39
+      "PERCENT":26.39
    },
    {
       "OBJECTID":32,
@@ -349,7 +349,7 @@
       "STATE":48,
       "STUSAB":"TX",
       "NAME":"Texas",
-      "Percent of all households with any of the 4 housing problems":31.66
+      "PERCENT":31.66
    },
    {
       "OBJECTID":33,
@@ -357,7 +357,7 @@
       "STATE":49,
       "STUSAB":"UT",
       "NAME":"Utah",
-      "Percent of all households with any of the 4 housing problems":27.06
+      "PERCENT":27.06
    },
    {
       "OBJECTID":35,
@@ -365,7 +365,7 @@
       "STATE":51,
       "STUSAB":"VA",
       "NAME":"Virginia",
-      "Percent of all households with any of the 4 housing problems":28.32
+      "PERCENT":28.32
    },
    {
       "OBJECTID":34,
@@ -373,7 +373,7 @@
       "STATE":50,
       "STUSAB":"VT",
       "NAME":"Vermont",
-      "Percent of all households with any of the 4 housing problems":31.65
+      "PERCENT":31.65
    },
    {
       "OBJECTID":36,
@@ -381,7 +381,7 @@
       "STATE":53,
       "STUSAB":"WA",
       "NAME":"Washington",
-      "Percent of all households with any of the 4 housing problems":32.6
+      "PERCENT":32.6
    },
    {
       "OBJECTID":26,
@@ -389,7 +389,7 @@
       "STATE":55,
       "STUSAB":"WI",
       "NAME":"Wisconsin",
-      "Percent of all households with any of the 4 housing problems":26.24
+      "PERCENT":26.24
    },
    {
       "OBJECTID":25,
@@ -397,7 +397,7 @@
       "STATE":54,
       "STUSAB":"WV",
       "NAME":"West Virginia",
-      "Percent of all households with any of the 4 housing problems":21.44
+      "PERCENT":21.44
    },
    {
       "OBJECTID":27,
@@ -405,6 +405,6 @@
       "STATE":56,
       "STUSAB":"WY",
       "NAME":"Wyoming",
-      "Percent of all households with any of the 4 housing problems":23.97
+      "PERCENT":23.97
    }
 ]

@@ -14,7 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create projection and path generator
     var projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1200);
     var path = d3.geoPath().projection(projection);
-  
+
+    // Define color scale for housing problem percentages.
+    var data = d3.map();
+    var color = d3.scaleLinear()
+        .domain([21.44, 43.49])    
+        .range(["white", "red"])
+        .clamp(true);
+
+    // Draw the map
     d3.json("data/us-states.json").then(function(data) {
         svg.selectAll("path")
             .data(data.features)
@@ -22,18 +30,24 @@ document.addEventListener('DOMContentLoaded', function () {
         .append("path")
             .attr("d", path)
             .attr("class", "state")
-        .style("fill", "lightblue")
-        .style("stroke", "white")
-        .on("mouseover", function (event, d) {
-            d3.select(this).style("fill", "orange");
-        })
-        .on("mouseout", function (event, d) {
-            d3.select(this).style("fill", "lightblue");
-        })
-        .on("click", function (event, d) {
-            const stateName = d.properties.NAME;
-            console.log(`Clicked on: ${stateName}`);
-        });;
+            // Fill state color based on the percentage of housing problems
+            .style("fill", function(d) {
+                var percent = d.properties.percent;
+                return color(percent);
+            })
+            .style("stroke", "black")
+            .on("mouseover", function (event, d) {
+                d3.select(this).style("fill", "orange");
+            })
+            .on("mouseout", function(d) {
+                d3.select(this).style("fill", function(d) {
+                    var percent = d.properties.percent;
+                    return color(percent);
+                })
+            })
+            .on("click", function (event, d) {
+                d3.select(this).style("fill", "orange");
+            });;
     }).catch(function(error) {
         console.error("Error loading GeoJSON data:", error);
     });
