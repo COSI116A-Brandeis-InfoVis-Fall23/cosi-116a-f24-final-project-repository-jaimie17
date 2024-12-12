@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var data = d3.map();
     var color = d3.scaleLinear()
         .domain([21.44, 43.49])
-        .range(["white", "green"])
+        .range(["white", "red"])
         .clamp(true);
 
     // State name to abbreviation mapping
@@ -76,6 +76,21 @@ document.addEventListener('DOMContentLoaded', function () {
         "Wyoming": "WY"
     };
 
+    // Create tooltip to display state name and percentage on mouseover
+    var tooltip = d3.select("#map").append("div")
+        .attr("class", "tooltip")
+        .style("position", "fixed")
+        .style("bottom", "10px")
+        .style("right", "10px")
+        .style("visibility", "hidden")
+        .style("background-color", "white")
+        .style("border", "2px solid red")
+        .style("padding", "10px")
+        .style("border-radius", "3px")
+        .style("box-shadow", "0px 0px 10px gray")
+        .style("width", "150px")
+        .style("height", "70px");
+
     // Draw the map
     d3.json("data/us-states.json").then(function (data) {
         // Draw states
@@ -90,20 +105,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 return color(percent);
             })
             .style("stroke", "black")
-            .on("mouseover", function (event, d) {
+            .on("mouseover", function (d) {
                 d3.select(this).style("fill", "orange");
                 svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
                     .text(`${d.properties.name} (${d.properties.percent}%)`);
+                // On mouseover display tooltip with state name and percentage
+                tooltip.style("visibility", "visible")
+                .html(`<strong>State:</strong> ${d.properties.name}<br><strong>Percent housing problems:</strong> ${d.properties.percent}%`)
+                .style("color", "black");
             })
-            .on("mouseout", function (event, d) {
+            .on("mouseout", function (d) {
                 d3.select(this).style("fill", function () {
                     var percent = d.properties.percent;
                     return color(percent);
                 });
                 svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
                     .text(stateAbbreviations[d.properties.name]);
+                tooltip.style("visibility", "hidden"); // Hide tooltip on mouseout
             })
-            .on("click", function (event, d) {
+            .on("click", function (d) {
                 var stateName = d.properties.name;
                 if (selectedStates.has(stateName)) {
                     selectedStates.delete(stateName);
@@ -145,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .attr("x1", "0%").attr("y1", "0%").attr("x2", "100%").attr("y2", "0%");
 
         legendGradient.append("stop").attr("offset", "0%").attr("stop-color", "white");
-        legendGradient.append("stop").attr("offset", "100%").attr("stop-color", "green");
+        legendGradient.append("stop").attr("offset", "100%").attr("stop-color", "red");
 
         legendSvg.append("rect")
             .attr("width", legendWidth)
@@ -155,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
         legendSvg.append("text")
             .attr("x", 0)
             .attr("y", -5)
-            .text("Housing Problem Percentages");
+            .text("Housing Problem Percentage");
 
         var legendScale = d3.scaleLinear()
             .domain([21.44, 43.49])
