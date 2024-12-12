@@ -192,26 +192,26 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error loading GeoJSON data:", error);
     });
 
-    function updateMapAndChartSelection() {
-        svg.selectAll("path")
-            .style("fill", function (d) {
-                var percent = d.properties.percent;
-                var stateName = d.properties.name;
-                if (selectedStates.has(stateName)) {
-                    return "orange";
-                } else {
-                    return color(percent);
-                }
-            });
+    // function updateMapAndChartSelection() {
+    //     svg.selectAll("path")
+    //         .style("fill", function (d) {
+    //             var percent = d.properties.percent;
+    //             var stateName = d.properties.name;
+    //             if (selectedStates.has(stateName)) {
+    //                 return "orange";
+    //             } else {
+    //                 return color(percent);
+    //             }
+    //         });
 
-        if (incomeChartInstance) {
-            const incomeChartLabels = incomeChartInstance.data.labels;
-            incomeChartInstance.data.datasets[0].backgroundColor = incomeChartLabels.map(function (label) {
-                return selectedStates.has(label) ? 'orange' : '#36A2EB';
-            });
-            incomeChartInstance.update();
-        }
-    }
+    //     if (incomeChartInstance) {
+    //         const incomeChartLabels = incomeChartInstance.data.labels;
+    //         incomeChartInstance.data.datasets[0].backgroundColor = incomeChartLabels.map(function (label) {
+    //             return selectedStates.has(label) ? 'orange' : '#36A2EB';
+    //         });
+    //         incomeChartInstance.update();
+    //     }
+    // }
   
     // loading income and race data
     Promise.all([
@@ -370,34 +370,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
   
         // 3. bar chart for median income across all states
+        let selectedStates = new Set(); // Store selected states for brushing and linking
         const stateNames = incomeData.map(d => d.NAME);
         const medianIncomes = incomeData.map(d => d['Median Household Income In The Past 12 Months']);
-
-        console.log('State Names:', stateNames);
-        console.log('Median Incomes:', medianIncomes);
-
         const medianIncomeCtx = document.getElementById('medianIncomeChartGG').getContext('2d');
-        // Declare medianIncomeChartInstance at the top of script if needed for re-renders
+        let medianIncomeChartInstance; // Declare globally to allow re-renders
+
         if (medianIncomeChartInstance) {
             medianIncomeChartInstance.destroy(); // Destroy existing chart to avoid conflicts
         }
+
         medianIncomeChartInstance = new Chart(medianIncomeCtx, {
             type: 'bar',
             data: {
-                labels: incomeData.map(d => d.NAME), // State names
+                labels: stateNames,
                 datasets: [{
                     label: 'Median Income ($)',
-                    data: incomeData.map(d => d['Median Household Income In The Past 12 Months']),
-                    backgroundColor: '#36A2EB', // Initial color for all bars
+                    data: medianIncomes,
+                    backgroundColor: stateNames.map(name => selectedStates.has(name) ? 'orange' : '#36A2EB'),
                     borderColor: '#fff',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'orange', // Hover effect
+                    hoverBackgroundColor: 'orange',
                     hoverBorderColor: 'orange'
                 }]
             },
             options: {
                 responsive: true,
-                onClick: function(e, activeElements) {
+                onClick: function (e, activeElements) {
                     if (activeElements.length > 0) {
                         const clickedIndex = activeElements[0].index;
                         const clickedState = this.data.labels[clickedIndex];
@@ -411,26 +410,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 scales: {
                     x: {
-                        title: {
-                            display: true,
-                            text: 'States'
-                        },
-                        ticks: {
-                            autoSkip: false,
-                            maxRotation: 45,
-                            minRotation: 45
-                        }
+                        title: { display: true, text: 'States' },
+                        ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
                     },
                     y: {
-                        title: {
-                            display: true,
-                            text: 'Median Income ($)'
-                        },
+                        title: { display: true, text: 'Median Income ($)' },
                         beginAtZero: true,
                         ticks: {
-                            callback: function(value) {
-                                return `$${value.toLocaleString()}`; // Format as currency
-                            }
+                            callback: value => `$${value.toLocaleString()}`
                         }
                     }
                 },
@@ -438,14 +425,64 @@ document.addEventListener('DOMContentLoaded', function () {
                     legend: { position: 'top' },
                     tooltip: {
                         callbacks: {
-                            label: function(tooltipItem) {
-                                return `$${tooltipItem.raw.toLocaleString()}`; // Format tooltip as currency
-                            }
+                            label: tooltipItem => `$${tooltipItem.raw.toLocaleString()}`
                         }
                     }
                 }
             }
         });
+
+        // Function to update map and chart selection when states are clicked
+        function updateMapAndChartSelection() {
+            // Update the map by highlighting selected states
+            svg.selectAll("path")
+                .style("fill", function (d) {
+                    const stateName = d.properties.name;
+                    return selectedStates.has(stateName) ? 'orange' : color(d.properties.percent);
+                });
+
+            // Update the bar chart
+            if (medianIncomeChartInstance) {
+                const incomeChartLabels = medianIncomeChartInstance.data.labels;
+                medianIncomeChartInstance.data.datasets[0].backgroundColor = incomeChartLabels.map(function (label) {
+                    return selectedStates.has(label) ? 'orange' : '#36A2EB';
+                });
+                medianIncomeChartInstance.update();
+            }
+        }
+
+        // Map hover and click interaction
+        svg.selectAll("path")
+            .on("click", function (event, d) {
+                const stateName = d.properties.name;
+                if (selectedStates.has(stateName)) {
+                    selectedStates.delete(stateName);
+                } else {
+                    selectedStates.add(stateName);
+                }
+                updateMapAndChartSelection(); // Reflect changes on both map and chart
+            })
+            .on("mouseover", function (d) {
+                d3.select(this).style("stroke", "black").style("stroke-width", 2);
+                d3.select(this).style("fill", "orange");
+                svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
+                    .text(`${d.properties.name} (${d.properties.percent}%)`);
+                // On mouseover display tooltip with state name and percentage
+                tooltip.style("visibility", "visible")
+                .html(`<strong>State:</strong> ${d.properties.name}<br><strong>Percent housing problems:</strong> ${d.properties.percent}%`)
+                .style("color", "black");
+            })
+            .on("mouseout", function (d) {
+                d3.select(this).style("stroke", null).style("stroke-width", null);
+                d3.select(this).style("fill", function () {
+                    var percent = d.properties.percent;
+                    return color(percent);
+                });
+                svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
+                    .text(stateAbbreviations[d.properties.name]);
+                tooltip.style("visibility", "hidden"); // Hide tooltip on mouseout
+            });
+
         }).catch(function(error) {
         console.error("Error loading data:", error);
     });
