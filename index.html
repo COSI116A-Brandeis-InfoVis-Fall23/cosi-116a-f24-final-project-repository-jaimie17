@@ -130,7 +130,7 @@
     <select id="stateSelect" title="Select a State">Select a State
     </select>
     
-    <h3>Pie Chart</h3>
+    <h3>Racial Demographics Chart</h3>
     <canvas id="raceChart"></canvas>
     <!-- Income Chart (Bar Chart) -->
 <h3>Income Chart</h3>
@@ -166,13 +166,15 @@
       </ol>
       Our visualization also includes a pie chart displaying racial demographics and a bar chart showing income distribution for each state.
       Selecting a state from the dropdown menu will update the map and charts to display data for that state.
+      We chose a map as our primary visualization to provide geographical context and allow users to see trends across states.
+      Since position and length are the most accurate visual channels, we used bar charts for commparison of income.
+      The pie chart is used to show the distribution of racial demographics, which is a good choice for showing parts of a whole.
+      We used high-contrast colors to make the data stand out, and tried to avoid color associations such as green with money.
+      Selecting a bar on the income bar chart will highlight the corresponding state on the map.
+      (Add screenshots)      
     </p>
 
     <h1>Data Analysis</h1>
-    <p><em>Summary of data, data types, and data preprocessing.</em></p>
-
-    <p><em>Expectation: Data sources match the problem statement and are appropriate. These descriptions should be very explicit so someone could read your page and properly reproduce your results.</em></p>
-
     <p>
       This project uses datasets from the U.S. Department of Housing and
       Urban Development, including <a href="https://hudgis-hud.opendata.arcgis.com/datasets/35f3c8985bc7407ba0fe8f7b2291f5c0/about">housing problems</a>, 
@@ -189,6 +191,8 @@
       Once we had our cleaned data, we explored it in Tableau to identify preliminary trends and patterns. 
       We further reduced the data to include only the columns we needed for our visualizations, including percent housing problems (housing problem dataset), percent household income brackets (socioeconomic dataset), and percent racial demographics (race dataset) in separate sheets.
       Finally, we exported the data as CSV files, then converted them to JSON files for use in our visualizations.
+      We then sorted the income data in descending order to make it easier to see the distribution of income across states.
+      We found a <a href="https://github.com/PublicaMundi/MappingAPI/blob/master/data/geojson/us-states.json?short_path=1c1ebe5">GeoJSON file of US states</a> to use in our map visualization, which we added our housing problems data to to create our choropleth map. 
     </p>
 
 
@@ -277,6 +281,16 @@
     <p><em>Short summary of work completed and areas for improvement/future-work.</em></p>
     
     <p><em>Expectation: Meaningfully wraps up project and has good future directions.</em></p>
+
+    <p>We researched our chosen topic of housing inequality, finding data that would help us explore this issue.
+      After interviewing, outlining our domain tasks, and iterating over our designs, we created a US color map displaying percentage of housing problems
+      as well as a bar chart showing median income. We implemented brushing and linking between these charts to allow users to explore the data and find trends.
+      We also created a pie chart showing racial demographics for each state and a bar chart that further broke down income brackets. 
+      Areas of improvement include refining the color scale of the map, allowing users to sort the bar chart in different ways, and adding more data to the pie and bar charts
+      to let users explore a wider amount of data and uncover more patterns about factors that contribute to housing inequality.
+      We could also add more information to the map's tooltip to give users more context about each state's housing problems.
+      We can test our visualization with users to gather feedback in order to improve our design to enhance the user experience.
+    </p>
 
     
     <h1>Acknowledgments</h1>
