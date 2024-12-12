@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Tennessee": "TN", "Texas": "TX", "Utah": "UT", "Vermont": "VT", "Virginia": "VA", "Washington": "WA",
         "West Virginia": "WV", "Wisconsin": "WI", "Wyoming": "WY"
     };
+    
     // Draw the map
     d3.json("data/us-states.json").then(function(data) {
         svg.selectAll("path")
@@ -134,6 +135,14 @@ document.addEventListener('DOMContentLoaded', function () {
             var legendScale = d3.scaleLinear()
                 .domain([21.44, 43.49])
                 .range([0, legendWidth]);
+            
+            // Add title to legend
+            legend.append("text")
+            .text("Percentage of Households with Housing Problems by State (%)")
+            .style("font-size", "12px")
+            .style("font-weight", "bold")
+            .attr("x", -50)
+            .attr("y", -7);
 
             // Add a rectangle for the legend color scale
             legend.append("defs")
@@ -223,16 +232,16 @@ document.addEventListener('DOMContentLoaded', function () {
   
             // 1. Update Racial Composition Chart (Pie Chart)
             const raceCategories = [
-                'White alone (not Hispanic)',
-                'Black or African American alone (not Hispanic)',
-                'American Indian and Alaska Native alone (not Hispanic)',
-                'Asian alone (not Hispanic)',
-                'Native Hawaiian and Other Pacific Islander alone (not Hispanic)',
-                'Some other race alone (not Hispanic)',
-                'Two or more races (not Hispanic)'
+                'White alone',
+                'Black or African American alone',
+                'American Indian and Alaska Native alone',
+                'Asian alone',
+                'Native Hawaiian and Other Pacific Islander alone',
+                'Some other race alone',
+                'Two or more races'
             ];
   
-            const racePercentages = raceCategories.map(category => race[category + ' as a %']);
+            const racePercentages = raceCategories.map(category => race[category + ' (not Hispanic) as a %']);
   
             const raceChartData = {
                 labels: raceCategories,
@@ -329,13 +338,13 @@ document.addEventListener('DOMContentLoaded', function () {
   
         // 3. bar chart for median income across all states
         const stateNames = incomeData.map(d => d.NAME);
-        const medianIncomes = incomeData.map(d => d['Median Household Income In The Past 12 Months']); // Replace with your actual key
+        const medianIncomes = incomeData.map(d => d['Median Household Income In The Past 12 Months']);
 
         console.log('State Names:', stateNames);
         console.log('Median Incomes:', medianIncomes);
 
         const medianIncomeCtx = document.getElementById('medianIncomeChartGG').getContext('2d');
-        // Declare medianIncomeChartInstance at the top of your script if needed for re-renders
+        // Declare medianIncomeChartInstance at the top of script if needed for re-renders
         if (medianIncomeChartInstance) {
             medianIncomeChartInstance.destroy(); // Destroy existing chart to avoid conflicts
         }
