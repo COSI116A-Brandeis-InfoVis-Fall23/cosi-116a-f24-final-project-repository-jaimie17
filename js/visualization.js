@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // storing the chart instances
     let raceChartInstance = null;
     let incomeChartInstance = null;
-    let medianIncomeChartInstance = null; 
-  
+    let medianIncomeChartInstance = null;
+
     // map visualization
     var svg = d3.select("#us-map");
-  
+
     // Define dimensions
     var width = 960;
     var height = 600;
-  
+
     // Create projection and path generator
     var projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1200);
     var path = d3.geoPath().projection(projection);
@@ -18,167 +18,180 @@ document.addEventListener('DOMContentLoaded', function () {
     // Define color scale for housing problem percentages.
     var data = d3.map();
     var color = d3.scaleLinear()
-        .domain([21.44, 43.49])    
-        .range(["white", "red"])
-        .clamp(true);        
+        .domain([21.44, 43.49])
+        .range(["white", "green"])
+        .clamp(true);
 
-    // Abbreviation mapping for states
+    // State name to abbreviation mapping
     const stateAbbreviations = {
-        "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA",
-        "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE", "Florida": "FL", "Georgia": "GA",
-        "Hawaii": "HI", "Idaho": "ID", "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS",
-        "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD", "Massachusetts": "MA",
-        "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS", "Missouri": "MO", "Montana": "MT",
-        "Nebraska": "NE", "Nevada": "NV", "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM",
-        "New York": "NY", "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK",
-        "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC", "South Dakota": "SD",
-        "Tennessee": "TN", "Texas": "TX", "Utah": "UT", "Vermont": "VT", "Virginia": "VA", "Washington": "WA",
-        "West Virginia": "WV", "Wisconsin": "WI", "Wyoming": "WY"
+        "Alabama": "AL",
+        "Alaska": "AK",
+        "Arizona": "AZ",
+        "Arkansas": "AR",
+        "California": "CA",
+        "Colorado": "CO",
+        "Connecticut": "CT",
+        "Delaware": "DE",
+        "Florida": "FL",
+        "Georgia": "GA",
+        "Hawaii": "HI",
+        "Idaho": "ID",
+        "Illinois": "IL",
+        "Indiana": "IN",
+        "Iowa": "IA",
+        "Kansas": "KS",
+        "Kentucky": "KY",
+        "Louisiana": "LA",
+        "Maine": "ME",
+        "Maryland": "MD",
+        "Massachusetts": "MA",
+        "Michigan": "MI",
+        "Minnesota": "MN",
+        "Mississippi": "MS",
+        "Missouri": "MO",
+        "Montana": "MT",
+        "Nebraska": "NE",
+        "Nevada": "NV",
+        "New Hampshire": "NH",
+        "New Jersey": "NJ",
+        "New Mexico": "NM",
+        "New York": "NY",
+        "North Carolina": "NC",
+        "North Dakota": "ND",
+        "Ohio": "OH",
+        "Oklahoma": "OK",
+        "Oregon": "OR",
+        "Pennsylvania": "PA",
+        "Rhode Island": "RI",
+        "South Carolina": "SC",
+        "South Dakota": "SD",
+        "Tennessee": "TN",
+        "Texas": "TX",
+        "Utah": "UT",
+        "Vermont": "VT",
+        "Virginia": "VA",
+        "Washington": "WA",
+        "West Virginia": "WV",
+        "Wisconsin": "WI",
+        "Wyoming": "WY"
     };
-    
+
     // Draw the map
-    d3.json("data/us-states.json").then(function(data) {
+    d3.json("data/us-states.json").then(function (data) {
+        // Draw states
         svg.selectAll("path")
             .data(data.features)
             .enter()
             .append("path")
             .attr("d", path)
             .attr("class", "state")
-            // Fill state color based on the percentage of housing problems
-            .style("fill", function(d) {
+            .style("fill", function (d) {
                 var percent = d.properties.percent;
                 return color(percent);
             })
             .style("stroke", "black")
             .on("mouseover", function (event, d) {
                 d3.select(this).style("fill", "orange");
-    
-                // Remove any existing labels before adding new ones
-                svg.selectAll("text#hoverLabel").remove(); 
-    
-                // Show the name and percentage label on hover
-                svg.selectAll("text")
-                    .data([d])  // Only bind data for the hovered state
-                    .enter()
-                    .append("text")
-                    .attr("id", "hoverLabel")  // Add an ID for the text label
-                    .attr("x", function(d) {
-                        return path.centroid(d)[0]; // X coordinate for the text (centroid of the state)
-                    })
-                    .attr("y", function(d) {
-                        return path.centroid(d)[1]; // Y coordinate for the text (centroid of the state)
-                    })
-                    .attr("dy", ".35em")  // Adjust vertical alignment of the text
-                    .attr("text-anchor", "middle")  // Horizontally center the text
-                    .text(function(d) {
-                        var percent = d.properties.percent;
-                        // var stateName = d.properties.name;
-                        return percent ? percent.toFixed(1) + "%" : ""; // Display name and percentage
-                    })
-                    .attr("fill", "black")  // Text color
-                    .attr("font-size", "12px")  // Font size
-                    .attr("font-weight", "bold");
-            })        
-            .on("mouseout", function(d) {
-                d3.select(this).style("fill", function(d) {
+                svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
+                    .text(`${d.properties.name} (${d.properties.percent}%)`);
+            })
+            .on("mouseout", function (event, d) {
+                d3.select(this).style("fill", function () {
                     var percent = d.properties.percent;
                     return color(percent);
-                })
-                // Remove the percentage label when mouse leaves the state
-                svg.selectAll("text#hoverLabel").remove();  // Remove the hover label on mouseout
+                });
+                svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
+                    .text(stateAbbreviations[d.properties.name]);
             })
-            .on("click", function(event, d) {
+            .on("click", function (event, d) {
                 var stateName = d.properties.name;
-                // Toggle selection
                 if (selectedStates.has(stateName)) {
                     selectedStates.delete(stateName);
                 } else {
                     selectedStates.add(stateName);
                 }
-                updateMapAndChartSelection(); // Update selection on both map and chart
+                updateMapAndChartSelection();
             });
-        
-            // Function to update the selection on both the map and chart
-            function updateMapAndChartSelection() {
-                // Highlight the selected states on the map
-                svg.selectAll("path")
-                    .style("fill", function(d) {
-                        var percent = d.properties.percent;
-                        var stateName = d.properties.name;
-                        if (selectedStates.has(stateName)) {
-                            return "orange"; // Highlight selected states
-                        } else {
-                            return color(percent); // Normal color
-                        }
-                    });
 
-                // Highlight the bars on the median income chart
-                if (incomeChartInstance) {
-                    const incomeChartLabels = incomeChartInstance.data.labels;
-                    const incomeChartBars = incomeChartInstance.data.datasets[0].data;
+        // Add state labels with abbreviations
+        svg.selectAll("text")
+            .data(data.features)
+            .enter()
+            .append("text")
+            .attr("id", d => `label-${stateAbbreviations[d.properties.name]}`)
+            .attr("x", function (d) {
+                return path.centroid(d)[0];
+            })
+            .attr("y", function (d) {
+                return path.centroid(d)[1];
+            })
+            .attr("text-anchor", "middle")
+            .attr("font-size", "10px")
+            .attr("fill", "black")
+            .text(function (d) {
+                return stateAbbreviations[d.properties.name];
+            });
 
-                    incomeChartInstance.data.datasets[0].backgroundColor = incomeChartLabels.map(function(label, index) {
-                        return selectedStates.has(label) ? 'orange' : '#36A2EB'; // Highlight corresponding bars
-                    });
+        // Add legend
+        var legendWidth = 300;
+        var legendHeight = 20;
+        var legendSvg = svg.append("g")
+            .attr("class", "legend")
+            .attr("transform", `translate(${width - legendWidth - 20}, 20)`);
 
-                    incomeChartInstance.update();
-                }
-            }
-            // Add legend
-            var legendWidth = 300;
-            var legendHeight = 20;
-            
-            var legend = svg.append("g")
-                .attr("class", "legend")
-                .attr("transform", "translate(650, 20)");
+        var legendGradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "legend-gradient")
+            .attr("x1", "0%").attr("y1", "0%").attr("x2", "100%").attr("y2", "0%");
 
-            var legendScale = d3.scaleLinear()
-                .domain([21.44, 43.49])
-                .range([0, legendWidth]);
-            
-            // Add title to legend
-            legend.append("text")
-            .text("Percentage of Households with Housing Problems by State (%)")
-            .style("font-size", "12px")
-            .style("font-weight", "bold")
-            .attr("x", -50)
-            .attr("y", -7);
+        legendGradient.append("stop").attr("offset", "0%").attr("stop-color", "white");
+        legendGradient.append("stop").attr("offset", "100%").attr("stop-color", "green");
 
-            // Add a rectangle for the legend color scale
-            legend.append("defs")
-                .append("linearGradient")
-                .attr("id", "gradient")
-                .attr("x1", "0%")
-                .attr("y1", "0%")
-                .attr("x2", "100%")
-                .attr("y2", "0%")
-                .selectAll("stop")
-                .data([
-                    {offset: "0%", color: color(21.44)},
-                    {offset: "100%", color: color(43.49)}
-                ])
-                .enter()
-                .append("stop")
-                .attr("offset", function(d) { return d.offset; })
-                .attr("stop-color", function(d) { return d.color; });
+        legendSvg.append("rect")
+            .attr("width", legendWidth)
+            .attr("height", legendHeight)
+            .style("fill", "url(#legend-gradient)");
 
-            legend.append("rect")
-                .attr("width", legendWidth)
-                .attr("height", legendHeight)
-                .style("fill", "url(#gradient)");
+        legendSvg.append("text")
+            .attr("x", 0)
+            .attr("y", -5)
+            .text("Housing Problem Percentages");
 
-            // Add axis for the legend
-            var axis = d3.axisBottom(legendScale)
-                .ticks(5)
-                .tickSize(10)
-                .tickFormat(d3.format(".1f"));
+        var legendScale = d3.scaleLinear()
+            .domain([21.44, 43.49])
+            .range([0, legendWidth]);
 
-            legend.append("g")
-                .attr("transform", "translate(0," + legendHeight + ")")
-                .call(axis);
-    }).catch(function(error) {
+        var legendAxis = d3.axisBottom(legendScale)
+            .tickValues([21.44, 30, 35, 40, 43.49])
+            .tickFormat(d => `${d}%`);
+
+        legendSvg.append("g")
+            .attr("transform", `translate(0, ${legendHeight})`)
+            .call(legendAxis);
+    }).catch(function (error) {
         console.error("Error loading GeoJSON data:", error);
     });
+
+    function updateMapAndChartSelection() {
+        svg.selectAll("path")
+            .style("fill", function (d) {
+                var percent = d.properties.percent;
+                var stateName = d.properties.name;
+                if (selectedStates.has(stateName)) {
+                    return "orange";
+                } else {
+                    return color(percent);
+                }
+            });
+
+        if (incomeChartInstance) {
+            const incomeChartLabels = incomeChartInstance.data.labels;
+            incomeChartInstance.data.datasets[0].backgroundColor = incomeChartLabels.map(function (label) {
+                return selectedStates.has(label) ? 'orange' : '#36A2EB';
+            });
+            incomeChartInstance.update();
+        }
+    }
   
     // loading income and race data
     Promise.all([
