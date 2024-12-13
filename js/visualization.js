@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // storing the chart instances
     let raceChartInstance = null;
     let incomeChartInstance = null;
-    let medianIncomeChartInstance = null;
 
     // map visualization
     var svg = d3.select("#us-map");
@@ -192,27 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error loading GeoJSON data:", error);
     });
 
-    // function updateMapAndChartSelection() {
-    //     svg.selectAll("path")
-    //         .style("fill", function (d) {
-    //             var percent = d.properties.percent;
-    //             var stateName = d.properties.name;
-    //             if (selectedStates.has(stateName)) {
-    //                 return "orange";
-    //             } else {
-    //                 return color(percent);
-    //             }
-    //         });
-
-    //     if (incomeChartInstance) {
-    //         const incomeChartLabels = incomeChartInstance.data.labels;
-    //         incomeChartInstance.data.datasets[0].backgroundColor = incomeChartLabels.map(function (label) {
-    //             return selectedStates.has(label) ? 'orange' : '#36A2EB';
-    //         });
-    //         incomeChartInstance.update();
-    //     }
-    // }
-  
     // loading income and race data
     Promise.all([
         fetch('data/income.json').then(response => response.json()),
@@ -457,6 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Map hover and click interaction
         svg.selectAll("path")
             .on("click", function (d) {
+                d3.select(this).style("fill", "orange");
                 const stateName = d.properties.name;
                 if (selectedStates.has(stateName)) {
                     selectedStates.delete(stateName);
@@ -489,8 +468,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add event listener to deselect states when clicking outside the map and bar chart
         document.addEventListener("click", function(event) {
             // On click outside the map and bar chart, clear selected states.
-            if (!event.target.closest("#map") && !event.target.closest("#medianIncomeChartGG")) {
+            if (!event.target.closest("path") && !event.target.closest("#medianIncomeChartGG")) {
                 selectedStates.clear();
+                tooltip.style("visibility", "hidden"); // Hide tooltip on deselection
                 updateMapAndChartSelection(); // Update selection on both map and chart
             }
         });
