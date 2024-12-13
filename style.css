@@ -83,6 +83,7 @@ svg {
 	border-color: aqua;
 	border-radius: 3px;
 	flex: 1;
+	font-size: 9px;
 }
 
 .tooltip {

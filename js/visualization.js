@@ -389,7 +389,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 scales: {
                     x: {
                         title: { display: true, text: 'States' },
-                        ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
+                        ticks: { autoSkip: false, maxRotation: 90, minRotation: 90,padding: 5 },
+                        font: {
+                            size: 4, // Smaller font size (adjust this number as needed)
+                            family: 'Times New Roman', // You can change the font family if needed
+                        },
                     },
                     y: {
                         title: { display: true, text: 'Median Income ($)' },

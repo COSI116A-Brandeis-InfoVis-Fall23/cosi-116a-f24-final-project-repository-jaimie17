@@ -115,13 +115,13 @@
     <h1>Housing Inequality Across the U.S.</h1>
   <div style="display: flex; justify-content: center; align-items: center; gap: 50px; margin-left: 30px;text-align: center;">
     <!--create a svg with a to display the us map inside it -->
-    <div style="background-color: #ffffff;border-radius: 1px; border: 2px solid #ccc;width:900px;">
+    <div id="map" style="background-color: #ffffff;border-radius: 1px; border: 2px solid #ccc;width:900px;">
       <h3 >Choropleth map </h3>
       <svg id="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
     </div>
     
     <!-- Median Income Chart -->
-    <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 2px solid #ccc;width:800px;">
+    <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 2px solid #ccc;width:900px;">
       <h3>Median Income by State</h3>
       <div class="chart-container">
         <canvas id="medianIncomeChartGG" ></canvas>
@@ -136,7 +136,7 @@
       <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 2px solid #ccc; width: 450px;">
         <h3>Pie Chart</h3>
         <select id="stateSelect" title="Select a State" style="width: 100%; padding: 8px; margin-bottom: 15px;">Select a State</select>
-        <canvas id="raceChart" width="500" height="00"></canvas>
+        <canvas id="raceChart" width="500" ></canvas>
       </div>
       
       <!-- Income Chart (Bar Chart) -->
