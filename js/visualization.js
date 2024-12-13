@@ -202,31 +202,31 @@ document.addEventListener('DOMContentLoaded', function () {
             acc[d.NAME] = d;
             return acc;
         }, {});
-  
+
         const stateRaceData = raceData.reduce((acc, d) => {
             acc[d.NAME] = d;
             return acc;
         }, {});
-  
+
         // populating the dropdown with state names
         const states = Object.keys(stateIncomeData);
         const select = document.getElementById('stateSelect');
-  
+
         states.forEach(state => {
             const option = document.createElement('option');
             option.value = state;
             option.textContent = state;
             select.appendChild(option);
         });
-  
+
         // initially display the charts for the first state
         updateCharts(states[0]);
-  
+
         // event listener for dropdown change
         select.addEventListener('change', function() {
             updateCharts(select.value);
         });
-  
+
         // update both charts based on the selected state
         function updateCharts(selectedState) {
             // Destroy existing charts if they exist
@@ -236,11 +236,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (incomeChartInstance) {
                 incomeChartInstance.destroy();
             }
-  
+
             // income and race data for the selected state
             const income = stateIncomeData[selectedState];
             const race = stateRaceData[selectedState];
-  
+
             // 1. Update Racial Composition Chart (Pie Chart)
             const raceCategories = [
                 'White alone',
@@ -251,9 +251,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Some other race alone',
                 'Two or more races'
             ];
-  
+
             const racePercentages = raceCategories.map(category => race[category + ' (not Hispanic) as a %']);
-  
+
             const raceChartData = {
                 labels: raceCategories,
                 datasets: [{
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     borderWidth: 1
                 }]
             };
-  
+
             const raceChartOptions = {
                 responsive: true,
                 plugins: {
@@ -286,14 +286,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             };
-  
+
             const raceCtx = document.getElementById('raceChart').getContext('2d');
             raceChartInstance = new Chart(raceCtx, {
                 type: 'pie',  // 'pie' chart type
                 data: raceChartData,
                 options: raceChartOptions
             });
-  
+
             // 2. updating Income Chart (Bar Chart) with Income Ranges
             const incomeBrackets = [
                 "Less than $14,999",
@@ -307,10 +307,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 "$125,000 to $149,999",
                 "$150,000 or more"
             ];
-  
+
             // extracting the percentage data for each income range from the income object
             const incomePercentages = incomeBrackets.map(bracket => income[bracket]);
-  
+
             const incomeChartData = {
                 labels: incomeBrackets,
                 datasets: [{
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     borderWidth: 1
                 }]
             };
-  
+
             const incomeChartOptions = {
                 responsive: true,
                 plugins: {
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     y: { beginAtZero: true, max: 100, ticks: { stepSize: 10 } }
                 }
             };
-  
+
             const incomeCtx = document.getElementById('incomeChart').getContext('2d');
             incomeChartInstance = new Chart(incomeCtx, {
                 type: 'bar',  // income chart as a bar chart
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 options: incomeChartOptions
             });
         }
-  
+
         // 3. bar chart for median income across all states
         let selectedStates = new Set(); // Store selected states for brushing and linking
         const stateNames = incomeData.map(d => d.NAME);
@@ -503,5 +503,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }).catch(function(error) {
         console.error("Error loading data:", error);
     });
-  });
+});
 
