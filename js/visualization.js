@@ -433,8 +433,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Map hover and click interaction
+        let isClicked = false // Check if a state is clicked
         svg.selectAll("path")
             .on("click", function (d) {
+                isClicked = true;
                 d3.select(this).style("fill", "orange");
                 const stateName = d.properties.name;
                 if (selectedStates.has(stateName)) {
@@ -455,14 +457,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 .style("color", "black");
             })
             .on("mouseout", function (d) {
-                d3.select(this).style("stroke", null).style("stroke-width", null);
-                d3.select(this).style("fill", function () {
-                    var percent = d.properties.percent;
-                    return color(percent);
-                });
-                svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
+                if (!isClicked) {
+                    d3.select(this).style("stroke", null).style("stroke-width", null);
+                    d3.select(this).style("fill", function () {
+                        var percent = d.properties.percent;
+                        return color(percent);
+                    });
+                    svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
                     .text(stateAbbreviations[d.properties.name]);
-                tooltip.style("visibility", "hidden"); // Hide tooltip on mouseout
+                    tooltip.style("visibility", "hidden"); // Hide tooltip on mouseout
+                }
+                isClicked = false; // Reset click status
             });
 
         // Add event listener to deselect states when clicking outside the map and bar chart
