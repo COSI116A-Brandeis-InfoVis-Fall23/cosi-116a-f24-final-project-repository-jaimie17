@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 },
                 scales: {
-                    y: { beginAtZero: true, max: 100, ticks: { stepSize: 10 } }
+                    y: { beginAtZero: true, max: 50, ticks: { stepSize: 10 } }
                 }
             };
 
