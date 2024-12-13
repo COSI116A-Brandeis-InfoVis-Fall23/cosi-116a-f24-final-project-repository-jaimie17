@@ -417,7 +417,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 .style("fill", function (d) {
                     if (d != null) { // Avoid null errors
                         const stateName = d.properties.name;
-                        return selectedStates.has(stateName) ? 'orange' : color(d.properties.percent);
+                        return selectedStates.has(stateName) ? 'orange' : color(d.properties.percent); // Highlight selected states, else return to original color
+                    }
+                })
+                // Also update the stroke for selected states, black if selected and null otherwise
+                .style("stroke", function (d) {
+                    if (d != null) {
+                        const stateName = d.properties.name;
+                        return selectedStates.has(stateName) ? 'black' : null;
+                    }
+                })
+                // Update stroke width for selected states
+                .style("stroke-width", function (d) {
+                    if (d != null) {
+                        const stateName = d.properties.name;
+                        return selectedStates.has(stateName) ? 2 : null;
                     }
                 });
 
@@ -447,6 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateMapAndChartSelection(); // Reflect changes on both map and chart
             })
             .on("mouseover", function (d) {
+                // HIghliught the state on mouseover
                 d3.select(this).style("stroke", "black").style("stroke-width", 2);
                 d3.select(this).style("fill", "orange");
                 svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
@@ -457,6 +472,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .style("color", "black");
             })
             .on("mouseout", function (d) {
+                // If the state is not clicked, reset the color on mouseout
                 if (!isClicked) {
                     d3.select(this).style("stroke", null).style("stroke-width", null);
                     d3.select(this).style("fill", function () {
