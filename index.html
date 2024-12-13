@@ -112,30 +112,47 @@
     <!-- Change viewbox to whatever you want, e.g. "0 0 1000 6000" This determines your aspect ratio and coordinate system -->    
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
     <!-- Map Visualization -->
-    <!-- <h1>Housing Inequality Across the U.S.</h1>
-    <div id="map">Samiya's chloropath us map</div>
-    <canvas id="medianIncomeChartS"></canvas>
-    <svg id="stateMap" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg> -->
-
-    <div id="map">Chloropath us map</div>
+    <h1>Housing Inequality Across the U.S.</h1>
+  <div style="display: flex; justify-content: center; align-items: center; gap: 50px; margin-left: 30px;text-align: center;">
     <!--create a svg with a to display the us map inside it -->
-    <svg id="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+    <div style="background-color: #ffffff;border-radius: 1px; border: 2px solid #ccc;width:900px;">
+      <h3 >Choropleth map </h3>
+      <svg id="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    
     <!-- Median Income Chart -->
-    <h3>Median Income by State</h3>
-    <div class="chart-container">
-        <canvas id="medianIncomeChartGG" width="400" height="200"></canvas>
+    <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 2px solid #ccc;width:800px;">
+      <h3>Median Income by State</h3>
+      <div class="chart-container">
+        <canvas id="medianIncomeChartGG" ></canvas>
+      </div>
+    </div>
+  </div> 
+    
+    
+    <h3>Racial Demographics Chart and Income Chart by State</h3>
+
+    <div style="display: flex; justify-content: center; align-items: center; gap: 50px; margin-left: 30px;text-align: center;"> <!-- Flex container with space between elements -->
+      <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 2px solid #ccc; width: 450px;">
+        <h3>Pie Chart</h3>
+        <select id="stateSelect" title="Select a State" style="width: 100%; padding: 8px; margin-bottom: 15px;">Select a State</select>
+        <canvas id="raceChart" width="500" height="00"></canvas>
+      </div>
+      
+      <!-- Income Chart (Bar Chart) -->
+      <div style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 2px solid #ccc; width: 900px;">
+        <h3>Income Chart</h3>
+        <div class="chart-container">
+          <canvas id="incomeChart"></canvas>
+        </div>
+      </div>
     </div>
 
-<!-- State Selection Dropdown -->
-    <select id="stateSelect" title="Select a State">Select a State
-    </select>
-    
-    <h3>Racial Demographics Chart</h3>
-    <canvas id="raceChart"></canvas>
-    <!-- Income Chart (Bar Chart) -->
-<h3>Income Chart</h3>
-<div class="chart-container"><canvas id="incomeChart"></canvas></div>
 </div>
+
+
+
+
 
   <!-- Your writeup goes here -->
   <div class = "content-column">

@@ -151,4 +151,26 @@ svg {
 		-o-transform:rotate(45deg);
 		box-shadow:4px 4px 10px rgba(0,0,0,0.8);
 	}
+	/* Media query for screens smaller than 600px */
+    @media screen and (max-width: 600px) {
+      .flex-container {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* Reduced gap */
+        margin-left: 0; /* Remove margin-left */
+      }
+    }
+
+    /* Media query for larger screens (1000px and above) */
+    @media screen and (min-width: 1000px) {
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px; /* Space between elements */
+        margin-left: 30px; /* Left margin */
+      }
+    }
 }
