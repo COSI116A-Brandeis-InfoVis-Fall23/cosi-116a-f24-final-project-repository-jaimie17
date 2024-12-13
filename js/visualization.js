@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
-            // Hihglight the bar chart with orange based on selected states
+            // Highlight the bar chart with orange based on selected states
             if (medianIncomeChartInstance) {
                 // Loop over each chart label and update the background color based on selection.
                 for (let i = 0; i < medianIncomeChartInstance.data.labels.length; i++) {
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateMapAndChartSelection(); // Reflect changes on both map and chart
             })
             .on("mouseover", function (d) {
-                // HIghliught the state on mouseover
+                // Highlight the state on mouseover
                 d3.select(this).style("stroke", "black").style("stroke-width", 2);
                 d3.select(this).style("fill", "orange");
                 svg.select(`#label-${stateAbbreviations[d.properties.name]}`)
