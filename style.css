@@ -95,6 +95,41 @@ svg {
 	border-radius: 5px;
 	font-size: 14px;
 	visibility: hidden;
+}
+#bigdiv{
+	display: flex; justify-content: center; align-items: center; gap: 50px; margin-left: 30px;text-align: center;
+
+}
+.divsfix{
+	background-color: #ffffff; 
+	padding: 20px; 
+	border-radius: 10px; 
+	border: 2px solid #ccc;
+}
+#credits{
+	padding-top:150px; 
+	display:flex; 
+	justify-content: center; 
+	align-items: center;
+	padding-bottom: 20px;
+	color: rgba(244, 13, 52, 0.484);
+
+}
+#buttonstyle {
+	background-color: #0f3706; 
+	color: white; 
+	border: 2px solid #ccc; 
+	padding: 12px 25px; 
+	font-size: 16px; 
+	cursor: pointer; 
+	border-radius: 8px; 
+	text-align: center; 
+	display: inline-block; 
+	font-family: Arial, sans-serif;
+  }
+  
+  #buttonstyle:hover {
+	background-color: #748e6f; /* Hover effect for background */
   }
   
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
