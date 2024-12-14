@@ -89,9 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
         .style("box-shadow", "0px 0px 10px gray")
         .style("width", "150px")
         .style("height", "70px");
+    
+        let usStatesData;
 
     // Draw the map
     d3.json("data/us-states.json").then(function (data) {
+        // Store data in variable for use later
+        usStatesData = data.features;
         // Draw states
         svg.selectAll("path")
             .data(data.features)
@@ -378,12 +382,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (activeElements.length > 0) {
                         const clickedIndex = activeElements[0].index;
                         const clickedState = this.data.labels[clickedIndex];
+                        // Get the percent of the clicked state from the data
+                        const stateData = usStatesData.find(d => d.properties.name === clickedState);
+                        const percent = stateData.properties.percent;
                         if (selectedStates.has(clickedState)) {
                             selectedStates.delete(clickedState);
                         } else {
                             selectedStates.add(clickedState);
                         }
                         updateMapAndChartSelection(); // Update selection on both map and chart
+                        // Unhide tooltip and populate with clicked state data
+                        tooltip.style("visibility", "visible")
+                            .html(`<strong>State:</strong> ${clickedState}<br><strong>Percent housing problems:</strong> ${percent}%`)
+                            .style("color", "black");
                     }
                 },
                 scales: {
