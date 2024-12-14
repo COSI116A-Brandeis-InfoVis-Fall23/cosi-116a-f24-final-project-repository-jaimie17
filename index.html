@@ -135,15 +135,13 @@
   
   <!-- Your visualization here -->
 <div class="vis-holder">
-    <!-- Change viewbox to whatever you want, e.g. "0 0 1000 6000" This determines your aspect ratio and coordinate system -->    
-    <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
-    <!-- Map Visualization -->
     <h1>Housing Inequality Across the U.S.</h1>
   <div style="display: flex; justify-content: center; align-items: center; gap: 50px; margin-left: 30px;text-align: center;">
     <!--create a svg with a to display the us map inside it -->
     <div id="map" style="background-color: #ffffff;border-radius: 1px; border: 2px solid #ccc;width:900px;">
       <h3 >Choropleth map </h3>
       <svg id="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+      <p style="font-size: 10px">*District of Columbia is so small it is not easily visible on the map. The housing problem percentage for District of Columbia is <strong>34.99%</strong>.</p>
     </div>
     
     <!-- Median Income Chart -->
