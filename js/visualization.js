@@ -256,8 +256,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Two or more races'
             ];
 
+            // Extracting the percentage data for race
             const racePercentages = raceCategories.map(category => race[category + ' (not Hispanic) as a %']);
 
+            // Chart data
             const raceChartData = {
                 labels: raceCategories,
                 datasets: [{
@@ -277,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }]
             };
 
+            // Chart options
             const raceChartOptions = {
                 responsive: true,
                 plugins: {
@@ -291,6 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
 
+            // Create the pie chart
             const raceCtx = document.getElementById('raceChart').getContext('2d');
             raceChartInstance = new Chart(raceCtx, {
                 type: 'pie',  // 'pie' chart type
@@ -315,6 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // extracting the percentage data for each income range from the income object
             const incomePercentages = incomeBrackets.map(bracket => income[bracket]);
 
+            // Chart data for the income chart
             const incomeChartData = {
                 labels: incomeBrackets,
                 datasets: [{
@@ -326,6 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }]
             };
 
+            // Chart options for the income chart
             const incomeChartOptions = {
                 responsive: true,
                 plugins: {
@@ -343,6 +349,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
 
+            // Create the bar chart for income
             const incomeCtx = document.getElementById('incomeChart').getContext('2d');
             incomeChartInstance = new Chart(incomeCtx, {
                 type: 'bar',  // income chart as a bar chart
@@ -362,6 +369,7 @@ document.addEventListener('DOMContentLoaded', function () {
             medianIncomeChartInstance.destroy(); // Destroy existing chart to avoid conflicts
         }
 
+        // Create the bar chart for median income
         medianIncomeChartInstance = new Chart(medianIncomeCtx, {
             type: 'bar',
             data: {
@@ -511,6 +519,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
+        // Add legend
         }).catch(function(error) {
         console.error("Error loading data:", error);
     });
