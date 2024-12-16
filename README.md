@@ -5,8 +5,10 @@ This template will help you get started with your project. Please look through a
 
 ## The GitHub Pages Website
 
-Make sure you publish your project to github pages, and put the URL here: 
+Github Pages Link:  
 https://cosi116a-brandeis-infovis-fall23.github.io/cosi-116a-f24-final-project-repository-team-10/
+
+Youtube Link: https://youtu.be/4mFCSgQdDxA?si=dk9mBVGMW7Y-nTJh 
 
 ### Github Pages
 
