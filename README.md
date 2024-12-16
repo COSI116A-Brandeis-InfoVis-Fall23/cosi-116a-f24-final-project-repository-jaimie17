@@ -8,6 +8,12 @@ https://cosi116a-brandeis-infovis-fall23.github.io/cosi-116a-f24-final-project-r
 
 Demo Video Link: https://youtu.be/4mFCSgQdDxA?si=dk9mBVGMW7Y-nTJh 
 
+### Team Members:
+1. Samiya Islam
+2. Jaimie Louie
+3. Kelden Dorji
+4. Ian Ho
+
 ### Github Pages
 
 For your final project, you must render your project as a Github Page.  Github pages is a feature of GitHub repositories that gives you a publicly available URL that loads your repository.  The link to the page corresponding to your repository should be written into the readme file of your repository.
