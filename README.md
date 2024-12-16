@@ -7,27 +7,13 @@ Github Pages Link:
 https://cosi116a-brandeis-infovis-fall23.github.io/cosi-116a-f24-final-project-repository-team-10/
 
 Demo Video Link: https://youtu.be/4mFCSgQdDxA?si=dk9mBVGMW7Y-nTJh 
-
 ### Team Members:
 1. Samiya Islam
 2. Jaimie Louie
 3. Kelden Dorji
 4. Ian Ho
 
-### Github Pages
-
-For your final project, you must render your project as a Github Page.  Github pages is a feature of GitHub repositories that gives you a publicly available URL that loads your repository.  The link to the page corresponding to your repository should be written into the readme file of your repository.
-
-To publish your repository, follow the instructions at https://pages.github.com/.  You'll have to go to the settings of your repository and point GitHub Pages to your master branch.  Your GitHub Pages link will be of the following format:
-
-    https://cosi116a-brandeis-infovis-fall23.github.io/graduate-team-12-mbta
-
-Note that you may have to clear your cache and reload (Ctrl+F5 on Chrome) a few times before seeing your page.
-
-
 ## Setup
-
-**Under no circumstances should you be editing files via the GitHub user interface.** Do all your edits locally after cloning the repository.
 
 1. Clone this repository to your local machine. E.g., in your terminal / command prompt `CD` to where you want this the folder for this activity to be. Then run `git clone <YOUR_REPO_URL>`
 
@@ -48,48 +34,27 @@ Note that you may have to clear your cache and reload (Ctrl+F5 on Chrome) a few 
 ## Root Files
 * `README.md` is this explanatory file for the repo.
 
-* `index.html` contains the main website content. It includes comments surrounded by `<!--` and `-->` to help guide you through making your edits.
+* `index.html` contains the main website content.
 
 * `style.css` contains the CSS.
 
-* `LICENCE` is your source code license.
+* `package.json` and `package-lock.json` contain dependencies for the libraries we used.
+
+* `LICENCE` is the source code license.
 
 ## Folders
 Each folder has an explanatory `README.md` file
 
-* `data` is where you will put your data files.
+* `data` includes our JSON data files.
 
-* `favicons` contains the favicons for the course projects. You shouldn't change anything here.
+* `favicons` contains the favicons for the course projects.
 
-* `files` will contain your slides (PDF) and video (MP4).
+* `files` contain our slides (PDF) and demo video (MP4).
 
-* `images` will contain your screenshots, diagrams, and photos.
+* `images` contains our application and sketch screenshots.
 
-* `js` will contain all JavaScript files you write.
+* `js` contains our JavaScript files.
 
-  * `visualization.js` is the main code that builds all your visualizations. Each visualization should be built following the [Reusable Chart model](https://bost.ocks.org/mike/chart/)
+  * `visualization.js` is the main code that builds our visualizations.
   
-* `lib` will contain any JavaScript library you use. It currently includes D3.
-
-## Workflow
-
-As you work with your team, you may have issues merging your changes. We recommend you pick one member of the team to be the project manager and deal with merging any pull requests.
-
-Instead of all working directly out of the main `master` branch, you can try adopting a Git branching model for development. See, e.g., [this article by Vincent Driessen](https://nvie.com/posts/a-successful-git-branching-model/) and the included image:
-
-![Image of Git branching model by Vincent Driessen](http://www.ccs.neu.edu/home/cody/courses/shared/git-model.png)
-
-## Grading
-
-Make sure to check these aspects of your work, which are important for every submission:
-
-* Coding was done properly:
-    * Your code was regularly committed and not edited via the GitHub user interface online.
-    * You have clear, commented, and validated code.
-    * Your web page loads properly and looks as expected in the latest Firefox and Chrome browsers.
-    * Any code from other sources (modified or copied straight) is acknowledged.
-
-* Your visualization works as required:
-    * Styles are consistent across views.
-    * None of the visualizations change size or move on the screen as you interact with them.
-    
+* `lib` contains the JavaScript libraries we used (d3).
