@@ -1,14 +1,12 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/h8SwtrsU)
-# COSI 116A Final Project Template
-
-This template will help you get started with your project. Please look through all these materials so you know how to organize your project.
+# COSI 116A Final Project - Housing Inequality
 
 ## The GitHub Pages Website
 
 Github Pages Link:  
 https://cosi116a-brandeis-infovis-fall23.github.io/cosi-116a-f24-final-project-repository-team-10/
 
-Youtube Link: https://youtu.be/4mFCSgQdDxA?si=dk9mBVGMW7Y-nTJh 
+Demo Video Link: https://youtu.be/4mFCSgQdDxA?si=dk9mBVGMW7Y-nTJh 
 
 ### Github Pages
 
